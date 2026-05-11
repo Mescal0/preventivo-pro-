@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preventivo Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">App preventivi</p>
+        <h1>Preventivo Pro</h1>
+        <p>Crea preventivi professionali per lavori, servizi e assistenza in pochi minuti.</p>
+      </div>
+      <button id="printBtn" class="primary">Stampa / Salva PDF</button>
+    </section>
+
+    <section class="grid">
+      <form id="quoteForm" class="panel">
+        <h2>Dati preventivo</h2>
+        <label>La tua attività
+          <input id="business" value="Marco Servizi" />
+        </label>
+        <label>Cliente
+          <input id="client" placeholder="Nome cliente" />
+        </label>
+        <label>Oggetto
+          <input id="subject" placeholder="Esempio: imbiancatura appartamento" />
+        </label>
+        <label>Validità offerta
+          <input id="validity" value="15 giorni" />
+        </label>
+
+        <div class="row between">
+          <h2>Voci</h2>
+          <button type="button" id="addItem" class="secondary">+ Aggiungi voce</button>
+        </div>
+        <div id="items"></div>
+
+        <div class="totals-inputs">
+          <label>Sconto €
+            <input id="discount" type="number" min="0" step="0.01" value="0" />
+          </label>
+          <label>IVA %
+            <input id="vat" type="number" min="0" step="1" value="22" />
+          </label>
+        </div>
+
+        <label>Note
+          <textarea id="notes" rows="4" placeholder="Tempi, materiali inclusi, esclusioni, condizioni di pagamento..."></textarea>
+        </label>
+      </form>
+
+      <aside class="panel preview" id="preview">
+        <div class="quote-head">
+          <div>
+            <p class="eyebrow">Preventivo</p>
+            <h2 id="pBusiness">Marco Servizi</h2>
+          </div>
+          <div class="quote-number" id="quoteNumber"></div>
+        </div>
+        <p><strong>Cliente:</strong> <span id="pClient">—</span></p>
+        <p><strong>Oggetto:</strong> <span id="pSubject">—</span></p>
+        <p><strong>Validità:</strong> <span id="pValidity">15 giorni</span></p>
+
+        <table>
+          <thead>
+            <tr><th>Descrizione</th><th>Q.tà</th><th>Prezzo</th><th>Totale</th></tr>
+          </thead>
+          <tbody id="pItems"></tbody>
+        </table>
+
+        <div class="summary">
+          <p><span>Subtotale</span><strong id="subtotal">€ 0,00</strong></p>
+          <p><span>Sconto</span><strong id="pDiscount">€ 0,00</strong></p>
+          <p><span>IVA</span><strong id="pVat">€ 0,00</strong></p>
+          <p class="grand"><span>Totale</span><strong id="grandTotal">€ 0,00</strong></p>
+        </div>
+
+        <div class="notes">
+          <strong>Note</strong>
+          <p id="pNotes">—</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
